@@ -1,24 +1,34 @@
 <template>
   <div id="app">
     <h2>Navigatie menu</h2>
+    <div>Id: {{id}}</div>
     <ul id="navMenu">
       <li>
-        <router-link :to="{ name: 'HTML', params: {id: this.id} }">Infopagina HTML</router-link>
+        <router-link :to="{ name: 'HTML', params: {id: this.id} }">
+          <span @click="randomNum">Infopagina HTML</span>
+        </router-link>
       </li>
       <li>
-        <router-link :to="{ name: 'CSS', params: {id: this.id} }">Infopagina CSS</router-link>
+        <router-link :to="{ name: 'CSS', params: {id: this.id} }">
+          <span @click="randomNum">Infopagina CSS</span>
+        </router-link>
       </li>
       <li>
-        <router-link :to="{ name: 'JavaScript', params: {id: this.id} }">JavaScript HTML</router-link>
+        <router-link :to="{ name: 'JavaScript', params: {id: this.id} }">
+          <span @click="randomNum">JavaScript HTML</span>
+        </router-link>
       </li>
       <li>
-        <router-link :to="{ name: 'Laravel', params: {id: this.id} }">Laravel HTML</router-link>
+        <router-link :to="{ name: 'Laravel', params: {id: this.id} }">
+          <span @click="randomNum">Laravel HTML</span>
+        </router-link>
       </li>
       <li>
-        <router-link :to="{ name: 'Vue', params: {id: this.id} }">Vue HTML</router-link>
+        <router-link :to="{ name: 'Vue', params: {id: this.id} }">
+          <span @click="randomNum">Vue HTML</span>
+        </router-link>
       </li>
     </ul>
-    <p>{{id}}beam</p>
       <router-view></router-view>
   </div>
 </template>
@@ -29,14 +39,17 @@ export default {
   name: "App",
   data() {
     return {
-        id: Math.floor(Math.random()*10),
+        id: 0,
       }
   },
-   watch: {
-    BeforeRouteUpdate (to, from, next){
-      this.id = Math.floor(Math.random()*10000)
-    }
-  },
+   methods: {
+     randomNum(){
+       this.id = Math.floor(Math.random()*10000000)
+     }
+   },
+   created() {
+     this.randomNum();
+   }
 };
 
 
